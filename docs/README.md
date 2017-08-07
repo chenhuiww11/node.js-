@@ -1,27 +1,19 @@
 ## SpliderApi
 
-基于Node+express 的一个网络爬虫 API接口
+基于Node 的一个网络爬虫 API接口
 包括前端开发日报、知乎日报、前端top框架排行、妹纸福利、搞笑视频、各类视频新闻资讯 热点详情接口数
-
->接口文档使用的是 $docsify 生成
-
-
-[查看接口文档:](https://ecitlm.github.io/SpliderApi) https://ecitlm.github.io/SpliderApi
-
-![apis.png](https://dn-coding-net-production-pp.qbox.me/e15fb746-4fe0-43c1-8517-d2ce33a26456.png)
-
-
-
-__项目目录结构:__
+<br/>
+  <iframe src="https://ghbtns.com/github-btn.html?user=ecitlm&repo=SpliderApi&type=watch&count=true&size=large" frameborder="0"
+                        scrolling="0" width="160" height="30"></iframe>
+			<iframe src="https://ghbtns.com/github-btn.html?user=ecitlm&amp;repo=SpliderApi&amp;type=fork&amp;count=true&amp;size=large"
+                        allowtransparency="true" frameborder="0" scrolling="0" width="160" height="30"></iframe>
+<br/>
+<a href="https://ecitlm.github.io/SpliderApi/#/">查看文档</a>
 
 ![node.png](https://sfault-image.b0.upaiyun.com/394/844/3948447900-595b1d19aef6f_articlex)
 
 ### 环境要求
 需要 NodeJS+express
-
-__源码下载__
-
-[GitHub:](https://github.com/ecitlm/SpliderApi) https://github.com/ecitlm/SpliderApi
 
 ### 安装
 ``` shell
@@ -41,10 +33,10 @@ $ node app.js
  * @param {string} 域名 
  * @param {obj} 参数 
  * @param {string} 接口路径 
- * @param {bool} true false 是否为https
+ * @param {bool} true http 请求 false 是否为https
  * @returns 
  */
-function httpGet(host, data, path, status) {
+function httpGet(GET方式请求)(host, data, path, status) {
     var options = {
         host: host,
         port: 80,
@@ -83,8 +75,6 @@ function httpGet(host, data, path, status) {
 }
 
 ```
-
-
 
 
 
@@ -200,7 +190,7 @@ function httpGet(host, data, path, status) {
 ### 2.框架 top 排行榜
 说明:获取前端框架排名,我们可以看看web前端世界的框架排名
 
-#### 2.1 获取前端框架top 20排名
+#### 2.1 获取前端框架top 100排名
 **必选参数:**
 `无` : 
 
