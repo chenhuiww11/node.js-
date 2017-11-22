@@ -25,6 +25,7 @@ const classify = require('./routes/picture/classify');
 const classify_tags_list = require('./routes/picture/classify_tags_list');
 const list = require('./routes/picture/list');
 const img_view = require('./routes/picture/img_view');
+const wxjsddk = require('./routes/web_daily/wxjsddk');
 const daily_list = require('./routes/web_daily/daily_list');
 const recommend_list = require('./routes/web_daily/recommend');
 const one_day_list = require('./routes/web_daily/one_day_list');
@@ -43,6 +44,7 @@ app.use('/img_view', img_view);
 
 //前端日报
 app.use('/daily_list', daily_list);
+app.use('/wxjsddk', wxjsddk);
 app.use('/recommend_list', recommend_list);
 app.use('/one_day_list', one_day_list);
 app.use('/web_frame', web_frame);
