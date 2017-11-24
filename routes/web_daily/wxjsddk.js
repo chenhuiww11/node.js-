@@ -11,53 +11,68 @@ const app     = express()
 const request = require("request");
 const fs      = require('fs');
 const Iconv   = require('iconv-lite');
-
-
+const WechatAPI = require('wechat-api');
+const grant_type = 'client_credential'
+const appid = 'wx26909511c99d391f'
+const appsecret = '23dc85025e96e9020da1f2cd06544682'
+const url="https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx26909511c99d391f&secret=23dc85025e96e9020da1f2cd06544682"
+const api = new WechatAPI(appid, appsecret);
 function list(req, res) {
-    var res = res;
-    var req = req;
-    var url = 'http://caibaojian.com/c/news';
-    console.log(url)
-
-    request({
-        url: url,
-        encoding: null
-    }, function (error, response, body) {
-        var links = [];
-        if (response && response.statusCode == 200) {
-            var body = Iconv.decode(body, 'utf-8');
-            $ = cheerio.load(body);
-            $('#content article ').each(function () {
-                var title = $(this).find('.entry-title span').text();
-                var description = $(this).find('.entry-content p').text();
-                var href = $(this).find('.read-more').attr('href');
-                var date = $(this).find('.entry-date').text();
-                var tmp = {
-                    title: title,
-                    id:parseInt(title),
-                    description: description,
-                    date: date,
-                    url: href
-                };
-                links.push(tmp);
-            });
-            res.send({
-                msg: "success",
-                data: links,
-                code: 1
-            });
-        } else {
-            res.send({
-                msg: "糟糕!!! 网络好像有点问题",
-                code: 0
-            })
-        }
-    });
+     request.get(url, function (error, response, body) {  
+      var data=JSON.parse(body);
+         res.send(data); 
+         
+         
+         
+         
+         
+         
+	 })
 
 }
 
 app.get('/', function (req, res) {
-	 res.send('请求成功了了了了')
+	var param = {
+	 debug: false,
+	 jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'],
+	 url: 'http://quanzhigaoshou.site'
+	};
+	api.getJsConfig(param, function (err, data, response) {
+	 res.send(data); 
+  	// TODO 
+	});;
+//	api.updateRemark('open_id', 'remarked', function (err, data, response) {
+//	 res.send(data); 
+//	// TODO 
+//	});
+//	list(req, res)
+//	 res.send('请求成功了了了了')
+//	 request.get(url, function (error, response, body) {  
+//    var data=JSON.parse(body);//<span style="color:#cc0000;">解析为一个对象不解析就是字符串</span>  
+//       res.send(data.access_token); 
+//	 })
+//  //获取jsapi_ticket  
+//  //https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=ACCESS_TOKEN&type=jsapi  
+//  //'https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=' + token.access_token + '&type=jsapi';  
+//  request.get('https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token='+data.access_token+'&type=jsapi',function(error, response, body){  
+//      var ticket=JSON.parse(body).ticket  
+//      console.log(ticket);  
+//      var string = 'jsapi_ticket=' + ticket + '&noncestr=' + noncestr + '×tamp=' + timestamp + '&url=' + page;  
+//          var signature=sha1(string); //获得签名   
+//          console.log(signature);  
+//  })
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 //  list(req, res)
 });
 module.exports = app;

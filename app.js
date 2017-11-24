@@ -6,11 +6,15 @@
  */
 
 const express = require('express');
+const config = require('./config');//引入配置文件
 const http = require('http');
 const app = express();
 const router = express.Router();
-
-
+var path = require('path');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 app.all('*', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
@@ -18,7 +22,17 @@ app.all('*', function(req, res, next) {
     res.header("X-Powered-By", ' 3.2.1');
     next();
 });
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
 
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 /**路由列表**/
 const index = require('./index');
 const classify = require('./routes/picture/classify');
