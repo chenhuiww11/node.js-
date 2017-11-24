@@ -31,7 +31,7 @@ function list(req, res) {
 
 }
 
-app.get('/', function (req, res) {
+app.post('/', function (req, res) {
 	var param = {
 	 debug: false,
 	 jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'],
