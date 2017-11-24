@@ -32,9 +32,45 @@ function list(req, res) {
 }
 
 app.post('/', function (req, res) {
+	var apiList = [
+			'checkJsApi',
+			'onMenuShareTimeline',
+			'onMenuShareAppMessage',
+			'onMenuShareQQ',
+			'onMenuShareWeibo',
+			'hideMenuItems',
+			'showMenuItems',
+			'hideAllNonBaseMenuItem',
+			'showAllNonBaseMenuItem',
+			'translateVoice',
+			'startRecord',
+			'stopRecord',
+			'onRecordEnd',
+			'playVoice',
+			'pauseVoice',
+			'stopVoice',
+			'uploadVoice',
+			'downloadVoice',
+			'chooseImage',
+			'previewImage',
+			'uploadImage',
+			'downloadImage',
+			'getNetworkType',
+			'openLocation',
+			'getLocation',
+			'hideOptionMenu',
+			'showOptionMenu',
+			'closeWindow',
+			'scanQRCode',
+			'chooseWXPay',
+			'openProductSpecificView',
+			'addCard',
+			'chooseCard',
+			'openCard'
+		];
 	var param = {
 	 debug: false,
-	 jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage'],
+	 jsApiList: apiList,
 	 url: 'http://quanzhigaoshou.site'
 	};
 	api.getJsConfig(param, function (err, data, response) {
