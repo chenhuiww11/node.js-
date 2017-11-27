@@ -71,7 +71,7 @@ app.post('/', function (req, res) {
 	var param = {
 	 debug: false,
 	 jsApiList: apiList,
-	 url: 'http://quanzhigaoshou.site'
+	 url: 'http://quanzhigaoshou.site/zhuanti/'
 	};
 	api.getJsConfig(param, function (err, data, response) {
 	 res.send(data); 
