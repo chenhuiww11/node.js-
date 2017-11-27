@@ -67,7 +67,8 @@
 			url: '/wxjsddk',
 			type: 'post',
 			data: {
-				url: encodeURIComponent(window.location.href.split('#')[0])
+				url: 'http://quanzhigaoshou.site'
+//				url: encodeURIComponent(window.location.href.split('#')[0])
 			},
 			success: function(data) {
 				console.log(data)
@@ -97,7 +98,6 @@
 		})
 
 		function wxShare(option, type) {
-			var fromurl = "https://appnew.ly.com/md/wxhuiyuanri/module/wxday.html";
 			//var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx3827070276e49e30&redirect_uri=http://wx.17u.cn/flight/getwxuserinfo.html?url=' + fromurl + '&showwxpaytitle=1&response_type=code&scope=snsapi_userinfo&state=123&connect_redirect=1#wechat_redirect';
 			wx.ready(function() {
 				//										wx.hideOptionMenu(); //禁止分享
